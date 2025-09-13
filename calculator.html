@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Value Calculator – Garden TD Values</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Jednoduchý kalkulátor – třeba možnost zadat čísla a spočítat průměr, možnost definovat hodnoty
+    function calculateAverage() {
+      const input = document.getElementById('valuesInput').value;
+      const parts = input.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+      if (parts.length === 0) {
+        document.getElementById('result').textContent = 'Please enter valid numbers separated by commas.';
+        return;
+      }
+      const sum = parts.reduce((a, b) => a + b, 0);
+      const avg = sum / parts.length;
+      document.getElementById('result').textContent = 'Average value: ' + avg.toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Garden TD Values</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Main Page</a></li>
+          <li><a href="leaderboard.html">Leaderboard Units</a></li>
+          <li><a href="exclusive.html">Exclusive Units</a></li>
+          <li><a href="mythical.html">Mythical Units</a></li>
+          <li><a href="calculator.html">Value Calculator</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>Value Calculator</h2>
+      <p>The calculator uses the average value. Enter values separated by commas, e.g. <em>100, 200, 300</em>.</p>
+      <input type="text" id="valuesInput" placeholder="Enter values here">
+      <button class="btn" onclick="calculateAverage()">Calculate Average</button>
+      <p id="result"></p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Garden TD Values</p>
+    </div>
+  </footer>
+</body>
+</html>
